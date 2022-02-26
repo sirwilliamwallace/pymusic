@@ -1,0 +1,32 @@
+{% extends 'main/index.html' %}
+{% block title %}
+    Upload
+{% endblock title %}
+
+{% block content %}
+<script>
+    msg = "Have Fun ...";
+    function warning(licence_msg){
+        confirm(licence_msg)
+    }
+    warning(msg);
+</script>
+
+{% if messages %}
+   {% for m in messages %}
+    <div class="container py-5">  
+    <div class="alert alert-success">  
+    <strong class="text-center text-capitalize">{{m}}</strong>
+    </div>
+    </div>  
+    {% endfor %}
+    {% endif %}
+<div class="container-fluid align-content-center">
+<form action="{% url 'music:upload' %}" method="POST" enctype="multipart/form-data"> 
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit" class="btn btn-lg btn-success">
+    Send
+</button>
+</form>
+{% endblock content %}

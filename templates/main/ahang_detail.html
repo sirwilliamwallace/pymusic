@@ -1,0 +1,73 @@
+{% extends 'main/index.html' %} {% block title %} {{title}} {% endblock %} {% block content %}
+
+<div class="container-lg bg-dark text-white-50">
+    <center>
+{% comment %} showing messages to client if available {% endcomment %}
+    {% if messages %}
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    {% endif %}
+        <h1>{{ahang.author}}-{{ahang.ahang_esm}}</h1>
+        <h2>{{ahang.updateDate|linebreaks}}</h2>
+        <hr class="badge-primary col-sm-5">
+        <h4>{{ahang.description|safe}}
+            <br/>
+            <p></p>
+
+            <div class="containter-fluid">
+                <audio controls="controls">
+        <source src="{{ahang.ahang_file.url}}" >
+        Your Browser does not support the audio element. Get a real browser!
+    </audio>
+                <p></p>
+                <a href={{ahang.ahang_file.url}} target="_blank" class="nav-link active" download>
+        Download
+    </a>
+            </div>
+            <br>
+            <p></p>
+            <h2 style="direction: rtl;">  {{ comments.count }} Comments are available on {{ ahang.ahang_esm }} </h2>
+            <br><br>
+
+          </div>
+        </div>
+        <h2 dir="rtl" style="text-align: right; margin-right: 100px;">Comments</h2>
+{% for comment in comments %}
+      
+<div class="text-center">             
+
+  <strong><p> {{ comment.name }} </p><p> {{ comment.created_on }} </p></strong>
+      <span class="text-decoration-none">  
+        {{ comment.body }}
+      </span>
+      </div>
+
+{% endfor %}
+
+
+        <div class="col-md-8 card mb-4  mt-3 ">
+          <div class="card-body">
+            {% if new_comment %}
+            <div class="alert alert-success" role="alert">
+                Your comment is being posted. thank you!
+            </div>
+            {% else %}
+            <h3>Comment on {{ ahang.ahang_esm }}</h3>
+            <form method="post" style="margin-top: 1.3em;">
+              {% csrf_token %}
+              {{ comment_form.as_p }}
+              <button type="submit" class="btn btn-primary  btn-lg">
+                Post Comment
+              </button>
+            </form>
+            <br><br>
+
+                </span>
+
+
+            </div>
+    </center>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+- Login Form - DONE
+- Login after signin - DONE
+- Redirect to home - DONE
+- logout - DONE
+- filter uploding file to only upload audio type's - DONE
+
+- there's a bug in comment below musics the comments go for every music - DONE
+
+-------------------------------------------
+- create a navbar - DONE
+- make  comment's look better - DONE
+- user forgotten password
