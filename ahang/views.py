@@ -62,7 +62,7 @@ def ahang_detail(request, id=None):
 
 def upload_music_form(request):
     # ISSUE: file not uploading
-    if request.method == "POST":
+    if request.method == "POST" and request.user.is_authenticated:
         form = AhangUplaodingForm(request.POST, request.FILES or None)
         if form.is_valid():
             form.save()
