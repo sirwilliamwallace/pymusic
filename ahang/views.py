@@ -127,9 +127,9 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user.is_active:
             login(request, user)
-            messages.success(request, f"Welcom dear {username} :)")
+            messages.success(request, f"Welcom  {username} :)")
         else:
-            messages.error(request, f"try again dear {username} if you are not registered yet, please register first or contact the admin")
+            messages.error(request, f"try again  {username} if you are not registered yet, please register first or contact the admin")
             form = LoginForm()
             return render(request, 'main/login.html', {"form": form})
 
