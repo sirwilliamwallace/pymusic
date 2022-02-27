@@ -27,12 +27,12 @@
             </div>
             <br>
             <p></p>
-            <h2 style="direction: rtl;">  {{ comments.count }} Comments are available on {{ ahang.ahang_esm }} </h2>
+            <h2>  {{ comments.count }} Comments are available on {{ ahang.ahang_esm }} </h2>
             <br><br>
 
           </div>
         </div>
-        <h2 dir="rtl" style="text-align: right; margin-right: 100px;">Comments</h2>
+        <h2 style="text-align: center; margin-right: 100px;">Comments</h2>
 {% for comment in comments %}
       
 <div class="text-center">             
@@ -50,7 +50,7 @@
           <div class="card-body">
             {% if new_comment %}
             <div class="alert alert-success" role="alert">
-                Your comment is being posted. thank you!
+                Your comment is posted. thank you!
             </div>
             {% else %}
             <h3>Comment on {{ ahang.ahang_esm }}</h3>
@@ -58,7 +58,7 @@
               {% csrf_token %}
               {{ comment_form.as_p }}
               <button type="submit" class="btn btn-primary  btn-lg">
-                Post Comment
+                Post 
               </button>
             </form>
             <br><br>
