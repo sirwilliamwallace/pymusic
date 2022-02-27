@@ -21,10 +21,10 @@ class CommentForm(forms.ModelForm):
         required=True,
     )
     body = forms.CharField(
-        label="Message",
+        label="Comment ",
         label_suffix="",
         widget=forms.Textarea(
-            attrs={"placeholder": "Enter Your Message", "class": "form-control"}
+            attrs={"placeholder": "Your Comment on this song ", "class": "form-control"}
         ),
         required=True,
     )
