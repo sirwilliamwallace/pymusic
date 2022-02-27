@@ -7,24 +7,24 @@ from django.contrib.auth.models import User
 
 class CommentForm(forms.ModelForm):
     name = forms.CharField(
-        label="اسم ",
+        label="Name",
         label_suffix="",
-        widget=forms.TextInput(attrs={"class": "form-control"}),
+        widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"Enter Your name ..."}),
         required=True
     )
     email = forms.EmailField(
-        label=" ایمیل",
+        label="Enter your email",
         label_suffix="",
         widget=forms.EmailInput(
-            attrs={"placeholder": "ایمیل ", "class": "form-control"}
+            attrs={"placeholder": "Enter Your Email ...", "class": "form-control"}
         ),
         required=True,
     )
     body = forms.CharField(
-        label="متن اهنگ",
+        label="Message",
         label_suffix="",
         widget=forms.Textarea(
-            attrs={"placeholder": "متن", "class": "form-control"}
+            attrs={"placeholder": "Enter Your Message", "class": "form-control"}
         ),
         required=True,
     )
