@@ -18,10 +18,10 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'music:home' %}"> Home </a>
           </li>
-          <li class="nav-item text-right">
-            <a class="nav-link" href="{% url 'music:upload' %}"> Upload Music </a>
-          </li>
           {% if not request.user.is_authenticated %}
+           <li class="nav-item text-right">
+              <a class="nav-link" href="{% url 'music:upload' %}"> Upload Music </a>
+           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'music:register' %}"> Register </a>
           </li>
@@ -33,6 +33,9 @@
             <a class="nav-link" href="{% url 'music:logout' %}"> Logout </a>
           </li>
           {% endif %}
+              <li class="nav-item ">
+                <a class="nav-link" href="https://www.djangoproject.com/">Written By Django </a>
+              </li>
         </ul>
       </nav>
       <div class="container-fluid" style="margin-top:80px">
