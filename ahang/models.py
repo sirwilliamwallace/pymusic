@@ -3,6 +3,11 @@ from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
 from .validators import validate_file
 
+class AhangManager(models.Manager):
+    def get_next_song(self):
+        return self.get_queryset().filter(isAgreed=True).order_by('-id')[0]
+    def get_prev_song(self):
+        return self.get_queryset().filter(isAgreed=True).order_by('-id')[1]
 
 class Ahang(models.Model):
     # author, description, ahang, publish and update date
@@ -13,9 +18,18 @@ class Ahang(models.Model):
     publishDate = models.DateField(auto_now_add=True)
     updateDate = models.DateField(auto_now=True)
     isAgreed = models.BooleanField(default=False)
+    objects = AhangManager()
 
     def get_absolute_url(self):
         return reverse("music:detail", args=[str(self.id)])
+
+    def get_next_absolute_url(self):
+        return reverse("music:detail", args=[str(Ahang.objects.get_next_song().id)])
+
+    def get_prev_absolute_url(self):
+        return reverse("music:detail", args=[str(Ahang.objects.get_prev_song().id)])
+
+
 
     def __str__(self):
         return "{author}-{ahang_esm}-{id}".format(author=self.author, ahang_esm=self.ahang_esm, id=self.id)
