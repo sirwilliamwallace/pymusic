@@ -12,6 +12,9 @@
         <h2>{{ahang.updateDate|linebreaks}}</h2>
         <hr class="badge-primary col-sm-5">
         <h4>{{ahang.description|safe}}
+            <a href="{{ ahang.get_next_absolute_url }}" class="btn btn-primary">Next Song</a>
+            <a href="{{ ahang.get_prev_absolute_url }}" class="btn btn-primary">Prev Song</a>
+
             <br/>
             <p></p>
 
