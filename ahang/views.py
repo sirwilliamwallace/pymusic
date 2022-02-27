@@ -35,12 +35,14 @@ def index(request):
 def ahang_detail(request, id=None):
     ahang = get_object_or_404(Ahang, id=id, isAgreed=True)
     esme_ahang = f"{ahang.author}\t-\t{ahang.ahang_esm}"
-
+    next_song = Ahang.objects.get_next_song().id
+    prev_song = Ahang.objects.get_prev_song().id
+    print (next_song)
     comments = ahang.comments.filter(active=True)
 
     new_comment = None
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST or None)
         if comment_form.is_valid():
             # Create Comment object but don't save to database yet
             new_comment = comment_form.save(commit=False)
@@ -55,7 +57,9 @@ def ahang_detail(request, id=None):
         "comments": comments,
         "new_comment": new_comment,
         "comment_form": comment_form,
-        "title": esme_ahang
+        "title": esme_ahang,
+        "next_song": next_song,
+        "prev_song": prev_song,
     }
     return render(request, 'main/ahang_detail.html', context)
 
